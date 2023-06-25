@@ -123,7 +123,7 @@ public class UI {
                 } else {
                     Gadgets = "CB1";
                     JOptionPane.showMessageDialog(null, "爆破成功,利用链为" + Gadgets, "提示", JOptionPane.WARNING_MESSAGE);
-                    Gadgets = GadGets.blastGadgets();
+//                    Gadgets = GadGets.blastGadgets();
                     // 此处写爆破代码
                 }
             }
