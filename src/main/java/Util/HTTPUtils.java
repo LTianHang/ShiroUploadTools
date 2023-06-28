@@ -11,13 +11,26 @@ import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.net.URL;
-
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
 
 
 public class HTTPUtils {
+
+    /**
+     * 判断传入的为http://还是https://类型 自动调用方法进行测试
+     */
+    public static HttpURLConnection httpShiroSend(String sendURL, String HTTPMethod, Boolean ProxyBooelan, String rememberMeText, String rememberMeFlag, String cookieStr) {
+        if (sendURL.startsWith("http://")) {
+            return HTTPSend(sendURL, HTTPMethod, ProxyBooelan, rememberMeText, rememberMeFlag, cookieStr);
+        } else if (sendURL.startsWith("https://")) {
+            return HTTPSSend(sendURL, HTTPMethod, ProxyBooelan, rememberMeText, rememberMeFlag, cookieStr);
+        } else {
+            return null;
+        }
+    }
+
     /**
      * http方法发包
      *
@@ -25,7 +38,7 @@ public class HTTPUtils {
      * @param HTTPMethod
      * @param ProxyBooelan
      */
-    public static HttpURLConnection HTTPSend(String sendURL, String HTTPMethod, Boolean ProxyBooelan, String rememberMeText) {
+    private static HttpURLConnection HTTPSend(String sendURL, String HTTPMethod, Boolean ProxyBooelan, String rememberMeText, String rememberMeFlag, String cookieStr) {
         HttpURLConnection conn = null;
         BufferedReader buffer = null;
         StringBuffer resultBuffer = null;
@@ -44,10 +57,9 @@ public class HTTPUtils {
             conn.setRequestMethod(HTTPMethod);
             conn.setUseCaches(false);
             if (rememberMeText != "") {
-                conn.setRequestProperty("Cookie", "rememberMe=" + rememberMeText);
+                conn.setRequestProperty("Cookie", rememberMeFlag + "=" + rememberMeText + ";" + cookieStr);
             } else {
-                conn.setRequestProperty("Cookie", "rememberMe=test");
-
+                conn.setRequestProperty("Cookie", rememberMeFlag + "=test" + ";" + cookieStr);
             }
             inputStream = conn.getInputStream();
 
@@ -72,7 +84,7 @@ public class HTTPUtils {
      * @param HTTPMethod
      * @param ProxyBooelan
      */
-    public static HttpURLConnection HTTPSSend(String sendURL, String HTTPMethod, Boolean ProxyBooelan, String rememberMeText) {
+    private static HttpURLConnection HTTPSSend(String sendURL, String HTTPMethod, Boolean ProxyBooelan, String rememberMeText, String rememberMeFlag, String cookieStr) {
         HttpsURLConnection conn = null;
         BufferedReader buffer = null;
         StringBuffer resultBuffer = null;
@@ -95,10 +107,9 @@ public class HTTPUtils {
             conn.setRequestMethod(HTTPMethod);
             conn.setUseCaches(false);
             if (rememberMeText != "") {
-                conn.setRequestProperty("Cookie", "rememberMe=" + rememberMeText);
+                conn.setRequestProperty("Cookie", rememberMeFlag + "=" + rememberMeText + ";" + cookieStr);
             } else {
-                conn.setRequestProperty("Cookie", "rememberMe=test");
-
+                conn.setRequestProperty("Cookie", rememberMeFlag + "=test" + ";" + cookieStr);
             }
             inputStream = conn.getInputStream();
 

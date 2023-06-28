@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="UI">
-  <grid id="27dc6" binding="mainJPanel" layout-manager="GridLayoutManager" row-count="8" column-count="7" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="mainJPanel" layout-manager="GridLayoutManager" row-count="8" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="514" height="400"/>
+      <xy x="20" y="20" width="548" height="400"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
       <component id="eb1e2" class="javax.swing.JComboBox" binding="HTTPMethod">
         <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="158" height="30"/>
+          </grid>
         </constraints>
         <properties>
           <model>
@@ -19,35 +21,19 @@
           </model>
         </properties>
       </component>
-      <component id="da405" class="javax.swing.JComboBox" binding="AESType">
-        <constraints>
-          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <model>
-            <item value="CBC"/>
-            <item value="GCM"/>
-          </model>
-        </properties>
-      </component>
       <component id="f06e" class="javax.swing.JTextField" binding="AESKey">
         <constraints>
-          <grid row="2" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
         <properties>
-          <text value="kPH+bIxk5D2deZiIxcaaaA=="/>
+          <text value="Key"/>
         </properties>
       </component>
-      <hspacer id="db62b">
-        <constraints>
-          <grid row="4" column="1" row-span="1" col-span="5" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </hspacer>
       <component id="12c96" class="javax.swing.JTextField" binding="FilePath">
         <constraints>
-          <grid row="5" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="5" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
@@ -55,22 +41,18 @@
           <text value="文件地址"/>
         </properties>
       </component>
-      <component id="6452d" class="javax.swing.JButton" binding="WriteFileBTN">
-        <constraints>
-          <grid row="5" column="4" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="写入文件"/>
-        </properties>
-      </component>
       <component id="1dbc0" class="javax.swing.JTextArea" binding="FileContext">
         <constraints>
-          <grid row="6" column="1" row-span="1" col-span="5" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+          <grid row="6" column="1" row-span="1" col-span="4" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
           </grid>
         </constraints>
         <properties>
+          <editable value="true"/>
+          <enabled value="true"/>
+          <lineWrap value="true"/>
           <text value="文件内容"/>
+          <wrapStyleWord value="true"/>
         </properties>
       </component>
       <grid id="ee453" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -85,7 +67,7 @@
       <grid id="e4a47" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="7" column="0" row-span="1" col-span="7" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="0" row-span="1" col-span="6" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
         <border type="none"/>
@@ -94,7 +76,7 @@
       <grid id="8629f" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="1" column="6" row-span="6" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="5" row-span="6" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
         <border type="none"/>
@@ -103,7 +85,7 @@
       <grid id="5bb13" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="7" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="6" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
         <border type="none"/>
@@ -111,38 +93,19 @@
       </grid>
       <component id="ebfaf" class="javax.swing.JTextField" binding="URLAddress">
         <constraints>
-          <grid row="1" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
         <properties>
-          <text value="http://127.0.0.1:8081/ShiroDemo_war/login"/>
-        </properties>
-      </component>
-      <component id="e4cc9" class="javax.swing.JComboBox" binding="gadgets">
-        <constraints>
-          <grid row="3" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <model>
-            <item value="CB无依赖(默认)"/>
-            <item value="CC1"/>
-            <item value="CC2"/>
-            <item value="CC3"/>
-            <item value="CC4"/>
-            <item value="CC5"/>
-            <item value="CC6"/>
-            <item value="CC7"/>
-            <item value="CC8"/>
-            <item value="CC9"/>
-            <item value="CC10"/>
-            <item value="CC11"/>
-          </model>
+          <text value="URL"/>
         </properties>
       </component>
       <component id="cab82" class="javax.swing.JComboBox" binding="ProxyBTN">
         <constraints>
-          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="158" height="30"/>
+          </grid>
         </constraints>
         <properties>
           <model>
@@ -153,7 +116,7 @@
       </component>
       <component id="511e" class="javax.swing.JButton" binding="checkKeyBTN">
         <constraints>
-          <grid row="2" column="4" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="检查Key"/>
@@ -161,13 +124,13 @@
       </component>
       <component id="e0e4e" class="javax.swing.JButton" binding="CheckURLBTN">
         <constraints>
-          <grid row="1" column="4" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="检查URL"/>
         </properties>
       </component>
-      <component id="acb34" class="javax.swing.JButton" binding="blastGadgetBTN">
+      <component id="ec968" class="javax.swing.JButton" binding="blastGadgetBTN">
         <constraints>
           <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -175,12 +138,61 @@
           <text value="爆破链"/>
         </properties>
       </component>
-      <component id="ec968" class="javax.swing.JButton" binding="checkGadgetsBTN">
+      <component id="e4cc9" class="javax.swing.JComboBox" binding="gadgetsText">
         <constraints>
-          <grid row="3" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="检查链"/>
+          <editable value="false"/>
+          <enabled value="true"/>
+          <model>
+            <item value="CBString WriteFIle(默认)"/>
+            <item value="URLDNS"/>
+            <item value="CB反弹CS"/>
+            <item value="其他链子正在开发中23.06.28"/>
+          </model>
+        </properties>
+      </component>
+      <component id="da405" class="javax.swing.JComboBox" binding="AESType">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="158" height="30"/>
+          </grid>
+        </constraints>
+        <properties>
+          <model>
+            <item value="CBC"/>
+            <item value="GCM"/>
+          </model>
+        </properties>
+      </component>
+      <component id="4bc70" class="javax.swing.JTextField" binding="cookieInputStr">
+        <constraints>
+          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Cookie: abc=123"/>
+        </properties>
+      </component>
+      <component id="31bbc" class="javax.swing.JComboBox" binding="rememberMeFlag">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <editable value="true"/>
+          <model>
+            <item value="rememberMe"/>
+          </model>
+        </properties>
+      </component>
+      <component id="6452d" class="javax.swing.JButton" binding="WriteFileBTN">
+        <constraints>
+          <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="写入文件"/>
         </properties>
       </component>
     </children>
